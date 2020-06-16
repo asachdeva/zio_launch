@@ -31,6 +31,11 @@ object Dependencies {
 
     // Runtime
     lazy val logback = "ch.qos.logback" % "logback-classic" % Versions.logback
+
+    // Test
+    lazy val zioTest = zio("zio-test", Versions.zio)
+    lazy val zioTestSbt = zio("zio-test-sbt", Versions.zio)
+    lazy val zioTestMagnolia = zio("zio-test-magnolia", Versions.zio)
   }
 
 }

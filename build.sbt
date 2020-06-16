@@ -16,6 +16,7 @@ promptTheme := PromptTheme(
 lazy val testSettings: Seq[Def.Setting[_]] = List(
   Test / parallelExecution := false,
   skip.in(publish) := true,
+  testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
   fork := true
 )
 
@@ -36,7 +37,10 @@ lazy val `zio_launch` = project
     scalaVersion := "2.13.2",
     libraryDependencies ++= Seq(
       Libraries.zioCore,
-      Libraries.zioCats
+      Libraries.zioCats,
+      Libraries.zioTest % Test,
+      Libraries.zioTestSbt % Test,
+      Libraries.zioTestMagnolia % Test
     ),
     addCompilerPlugin(Libraries.betterMonadicFor),
     format := {
