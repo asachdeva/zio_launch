@@ -13,7 +13,6 @@ promptTheme := PromptTheme(
   )
 )
 
-
 lazy val testSettings: Seq[Def.Setting[_]] = List(
   Test / parallelExecution := false,
   skip.in(publish) := true,

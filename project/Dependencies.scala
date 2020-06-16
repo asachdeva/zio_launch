@@ -25,7 +25,6 @@ object Dependencies {
     lazy val zioCore = zio("zio", Versions.zio)
     lazy val zioCats = zio("zio-interop-cats", Versions.zioCats)
 
-
     // Compiler
     lazy val kindProjector = ("org.typelevel" %% "kind-projector" % Versions.kindProjector).cross(CrossVersion.full)
     lazy val betterMonadicFor = "com.olegpy" %% "better-monadic-for" % Versions.betterMonadicFor
