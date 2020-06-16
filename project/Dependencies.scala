@@ -1,0 +1,37 @@
+import sbt._
+
+object Dependencies {
+
+  object Versions {
+    val catsEffect = "2.1.3"
+    val zio = "1.0.0-RC20"
+    val zioCats = "2.0.0.0-RC10"
+
+    // Test
+
+    // Compiler
+    val kindProjector = "0.11.0"
+    val betterMonadicFor = "0.3.1"
+
+    // Runtime
+    val logback = "1.2.3"
+  }
+
+  object Libraries {
+    def zio(artifact: String, version: String): ModuleID = "dev.zio" %% artifact % version
+
+    lazy val catsEffect = "org.typelevel" %% "cats-effect" % Versions.catsEffect
+
+    lazy val zioCore = zio("zio", Versions.zio)
+    lazy val zioCats = zio("zio-interop-cats", Versions.zioCats)
+
+
+    // Compiler
+    lazy val kindProjector = ("org.typelevel" %% "kind-projector" % Versions.kindProjector).cross(CrossVersion.full)
+    lazy val betterMonadicFor = "com.olegpy" %% "better-monadic-for" % Versions.betterMonadicFor
+
+    // Runtime
+    lazy val logback = "ch.qos.logback" % "logback-classic" % Versions.logback
+  }
+
+}
