@@ -7,7 +7,6 @@ object Dependencies {
     val zioCats = "2.2.0.1"
     val zio = "1.0.2"
 
-
     // Test
 
     // Compiler
