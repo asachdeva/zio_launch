@@ -4,7 +4,6 @@ import Dependencies._
 
 name := """zio_launch"""
 organization in ThisBuild := "asachdeva"
-crossScalaVersions in ThisBuild := Seq("2.12.12", "2.13.4")
 
 val format = taskKey[Unit]("Format files using scalafmt and scalafix")
 promptTheme := PromptTheme(
@@ -34,7 +33,7 @@ lazy val `zio_launch` = project
     organization := "asachdeva",
     name := "zio_launch",
     version := "0.0.1-SNAPSHOT",
-    scalaVersion := "2.13.3",
+    scalaVersion := "2.13.4",
     libraryDependencies ++= Seq(
       Libraries.zioCore,
       Libraries.zioCats,
