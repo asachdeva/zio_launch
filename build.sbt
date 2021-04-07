@@ -42,6 +42,7 @@ lazy val `zio_launch` = project
       Libraries.zioTestMagnolia % Test
     ),
     addCompilerPlugin(Libraries.betterMonadicFor),
+    scalafmtOnCompile := true,
     format := {
       Command.process("scalafmtAll", state.value)
       Command.process("scalafmtSbt", state.value)
