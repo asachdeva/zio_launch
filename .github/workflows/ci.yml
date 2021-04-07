@@ -21,4 +21,4 @@ jobs:
         uses: cachix/install-nix-action@v12
         
       - name: "Run with ${{ matrix.java }} 🚀"
-        run: nix-shell --argstr jdk "${{ matrix.java }}" --run "sbt buildZioLaunch"
+        run: nix-shell --argstr jdk "${{ matrix.java }}" --run "sbt buildZiolaunch"
