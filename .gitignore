@@ -2,3 +2,4 @@
 .bloop
 target/
 project/metals.sbt
+.idea/

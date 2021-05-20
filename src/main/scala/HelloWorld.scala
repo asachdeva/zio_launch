@@ -2,8 +2,8 @@ import zio._
 import zio.console._
 
 object HelloWorld extends App {
-  def run(args: List[String]): ZIO[ZEnv, Nothing, ExitCode] =
-    myAppLogic *> ZIO.succeed(ExitCode.success)
+  def run(args: List[String]): URIO[ZEnv, ExitCode] =
+    myAppLogic.exitCode
 
   val myAppLogic =
     for {

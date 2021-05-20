@@ -3,7 +3,7 @@ import com.scalapenos.sbt.prompt._
 import Dependencies._
 
 name := """zio_launch"""
-organization in ThisBuild := "asachdeva"
+ThisBuild / organizationName := "asachdeva"
 
 val format = taskKey[Unit]("Format files using scalafmt and scalafix")
 promptTheme := PromptTheme(
@@ -14,7 +14,7 @@ promptTheme := PromptTheme(
 
 lazy val testSettings: Seq[Def.Setting[_]] = List(
   Test / parallelExecution := false,
-  skip.in(publish) := true,
+  publish / skip := true,
   testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
   fork := true
 )
@@ -23,7 +23,7 @@ lazy val noPublish = Seq(
   publish := {},
   publishLocal := {},
   publishArtifact := false,
-  skip in publish := true
+  publish / skip := true
 )
 
 lazy val `zio_launch` = project
