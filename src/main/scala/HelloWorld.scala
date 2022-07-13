@@ -1,13 +1,14 @@
 import zio._
-import zio.console._
+import zio.Console._
 
-object HelloWorld extends App {
-  def run(args: List[String]): URIO[ZEnv, ExitCode] =
-    myAppLogic.exitCode
+object HelloWorld extends ZIOAppDefault {
+  def run = myAppLogic
 
   val myAppLogic =
     for {
-      _ <- putStrLn("Hello World!")
+      _ <- printLine("Hello! What is your name?")
+      name <- readLine
+      _ <- printLine(s"Hello, ${name}, welcome to ZIO!")
     } yield ()
 
 }

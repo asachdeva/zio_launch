@@ -1,25 +1,21 @@
 import zio._
-import zio.console._
+import zio.Console._
 import zio.test._
-import zio.test.Assertion._
-import zio.test.environment._
-import HelloWorld._
-
-import java.io.IOException
 
 object HelloWorld {
-  def sayHello: ZIO[Console, IOException, Unit] =
-    console.putStrLn("Hello, World!")
+  def sayHello: ZIO[Console, Nothing, Unit] =
+    printLine("Hello, World!").orDie
 }
 
-object HelloWorldSpec extends DefaultRunnableSpec {
-  def spec =
-    suite("HelloWorldSpec")(
-      testM("sayHello correctly displays output") {
-        for {
-          _ <- sayHello
-          output <- TestConsole.output
-        } yield assert(output)(equalTo(Vector("Hello, World!\n")))
-      }
-    )
+object HelloWorldSpec extends ZIOSpecDefault {
+  import HelloWorld._
+
+  def spec: Spec[TestEnvironment with Scope, Nothing] = suite("HelloWorldSpec")(
+    test("sayHello correctly displays output") {
+      for {
+        _ <- sayHello
+        output <- TestConsole.output
+      } yield assertTrue(output == Vector("Hello, World!\n"))
+    }
+  ).provideEnvironment(DefaultServices.live)
 }
